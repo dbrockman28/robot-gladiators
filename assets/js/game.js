@@ -7,34 +7,48 @@ console.log(playerName, playerAttack, playerHealth);
 let enemyName = "Roborto";
 let enemyHealth = 50;
 let enemyAttack = 12;
+let playerMoney = 10;
 
 let fight = function() {
-    // Alert users they are starting the round
-    window.alert("Welcome to Robot Gladiators!");
-    //Subtract the value of playerAttack from the value of enemyHealth and use that result to update the value in the enemyHealth variable.
-    enemyHealth = enemyHealth - playerAttack;
-    //Log a resulting message to the console so we know that it worked.
-    console.log(playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining.");
-    //Check enemy's health.
-    if (enemyHealth <= 0) {
-        window.alert(enemyName + " has died!");
-    } else {
-        window.alert(enemyName + " still has " + enemyHealth + " health left.");
-    }
-    //Subtract the value of enemyAttack from the value of playerHealth and use that result to update the value in the playerHealth variable.
-    playerHealth = playerHealth - enemyAttack;
-    //Log a resulting message to the console so we know that it worked.
-    console.log(enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining.");
-
-    if (playerHealth <= 0) {
-        window.alert(playerName + " has died!")
-    } else {
-        window.alert(playerName + " has " + playerHealth + " health reamaining.")
+        // Alert users they are starting the round
+        window.alert("Welcome to Robot Gladiators!");
+        let promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter FIGHT or SKIP to choose.");
+        console.log(promptFight);
+        //Subtract the value of playerAttack from the value of enemyHealth and use that result to update the value in the enemyHealth variable.
+        if (promptFight === "fight" || promptFight === "FIGHT") {
+        enemyHealth = enemyHealth - playerAttack;
+        //Log a resulting message to the console so we know that it worked.
+        console.log(playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining.");
+        //Check enemy's health.
+        if (enemyHealth <= 0) {
+            window.alert(enemyName + " has died!");
+        } else {
+            window.alert(enemyName + " still has " + enemyHealth + " health left.");
+        }
+        //Subtract the value of enemyAttack from the value of playerHealth and use that result to update the value in the playerHealth variable.
+        playerHealth = playerHealth - enemyAttack;
+        //Log a resulting message to the console so we know that it worked.
+        console.log(enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining.");
+        //Check player health.
+        if (playerHealth <= 0) {
+            window.alert(playerName + " has died!")
+        } else {
+            window.alert(playerName + " has " + playerHealth + " health reamaining.");
+        }
+    } else if (promptFight === "skip" || promptFight === "SKIP") {
+        //Confirm user wnats to skip.
+        let confirmSkip = window.confirm("Are you sure you'd like to skip");
+        //If yes, skip fight.
+        if (confirmSkip) {
+            window.alert(playerName + " has decided to skip the fight. Goodbye!");
+        //Subtract money from playerMoney for skipping.
+            playerMoney = playerMoney - 2;
+        }
+        //If no, ask question again by running fight() again.
+        else {
+        fight();
+        }
     }
 };
 
-fight();
-fight();
-fight();
-fight();
 fight();
