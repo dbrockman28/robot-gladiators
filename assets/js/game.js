@@ -48,6 +48,7 @@ let fight = function(enemyName) {
             window.alert(enemyName + " has " + enemyHealth + " health left.");
         }
         //Subtract the value of enemyAttack from the value of playerHealth and use that result to update the value in the playerHealth variable.
+        let damage = randomNumber(enemyAttack - 3, enemyAttack);
         playerHealth = Math.max(0, playerHealth - damage);
         //Log a resulting message to the console so we know that it worked.
         console.log(enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining.");
